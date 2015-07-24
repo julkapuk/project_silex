@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - 13_pukalska@127.0.0.1" uuid="67c9919d-4f33-4faf-b879-320c82f1a360">
+    <database-info product="MySQL" version="5.0.51a-24+lenny5" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="13_pukalska"/>
+    <table name="Kierowca" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idKierowca" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Imie" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Nazwisko" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Pojazd" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idKierowca"/>
+    </table>
+    <table name="Klient" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idKlient" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Nick" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Adres" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Kod-pocztowy" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Telefon" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="Mail" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idKlient"/>
+    </table>
+    <table name="Konto" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idKonta" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Nazwisko" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Stan" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Nazwisko"/>
+    </table>
+    <table name="Pizza" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idPizza" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nazwaPizzy" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Składniki" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Grupa" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idPizza"/>
+    </table>
+    <table name="Pizza plus" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="Grupa" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Cena" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="wielkoscPizzy" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Grupa,Cena,wielkoscPizzy"/>
+    </table>
+    <table name="Status zamówienia" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idStatus" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Status zamówienia" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idStatus"/>
+    </table>
+    <table name="Zamowienie" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idZamowienia" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idKlienta" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idKierowcy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Status zamowienia" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="idZamowienia"/>
+    </table>
+    <table name="Zamowienie_Klient" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="idZamowienia" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="nazwaPizzy" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" def="Jyc="/>
+      <column name="iloscPizzy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="wielkoscPizzy" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" def="Jyc="/>
+      <column name="Zamowienie_Klientcol" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="Zamowienie_Klientcol"/>
+    </table>
+    <table name="albums" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="CHAR" precision="64" scale="0" nullable="false" jdbcType="1"/>
+      <column name="artist" sqlType="CHAR" precision="64" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="categories" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id_categorie" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_images" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_categorie,id_images"/>
+    </table>
+    <table name="categories_names" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="comments" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="comment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="data" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="image_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="fk_comments_1_idx" unique="false" columns="user_id"/>
+      <index name="fk_comments_1_idx1" unique="false" columns="image_id"/>
+    </table>
+    <table name="files" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="CHAR" precision="48" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="UQ_files_1" unique="true" columns="name"/>
+    </table>
+    <table name="images" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="CHAR" precision="48" scale="0" nullable="false" jdbcType="1"/>
+      <column name="title" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="license" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="data" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="views_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="comments_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="score_5" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="score_4" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="score_3" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="score_2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="score_1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="scores" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="id_user" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="roles" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="CHAR" precision="32" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_users_1" table="users" schema="" catalog="13_pukalska" columns="id_role"/>
+    </table>
+    <table name="tags" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id_tag" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_image" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_tag,id_image"/>
+    </table>
+    <table name="tags_name" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="users" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="CHAR" precision="32" scale="0" nullable="false" jdbcType="1"/>
+      <column name="password" sqlType="CHAR" precision="128" scale="0" nullable="false" jdbcType="1"/>
+      <column name="id_role" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_data_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_users_1" columns="id_role" ref-table="roles" ref-schema="" ref-catalog="13_pukalska" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_users_1" unique="false" columns="id_role"/>
+    </table>
+    <table name="users_data" schema="" catalog="13_pukalska" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="registered" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="image" sqlType="TINYBLOB" precision="255" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="city" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="blocked" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <procedure name="WyswietlGraczy" schema="" catalog="13_pukalska" type="1"/>
+  </data-source>
+</component>

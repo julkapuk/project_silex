@@ -1,161 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>{% block head %}
-
-        {#{% block stylesheets %}#}
-        {#{% endblock %}#}
-
-    {% block fo %}
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {#<link href="{{ app.request.basepath }}/web/assets/bootstrap/css/style.css" rel="stylesheet" media="screen">#}
+    <meta charset="utf-8">
 
-        {#<link href="{{ app.request.basepath }}/web/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">#}
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
 
-        {#<script src="{{ app.request.basepath }}/web/assets/bootstrap/js/bootstrap.min.js"></script>#}
-        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 
-        {#*kosz?#}
-        {#<link href="css/bootstrap.min.css" rel="stylesheet">#}
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="{{ app.request.basepath }}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/assets/bootstrap/css/style.css">
 
-            <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="{{ app.request.basepath }}/assets/bootstrap/js/bootstrap.min.js"></script>
 
-            <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled JavaScript -->
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-        <link href='http://fonts.googleapis.com/css?family=Oxygen&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Bitter&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        {#end kosz?#}
-
-    <link href="{{ app.request.basepath }}/assets/style.css" rel="stylesheet" media="screen">
-
-
-    {% endblock %}
-
-        <title>
-            {% block title %}{% endblock %}
-        </title>
-
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
-
 <body>
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navligation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">pictures .pix</a>
-        </div>
-        <div class="navbar-collapse colapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">pictures<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">class</li>
-                        <li><a href="#"> class a </a></li>
-                        <li><a href="#"> class b </a></li>
-                        <li><a href="#"> class c </a></li>
-                        <li><a href="#"> class d </a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">top</li>
-                        <li><a href="#"> high score </a></li>
-                        <li><a href="#"> most popular </a></li>
-                    </ul>
-                </li>
-                <li><a href="#">about</a>
-                {#???#}
-                <li><a href="#" data-toggle="modal">contact</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-{#end nav#}
-
 <div class="container">
-    <div class="jumbotron text-center">
-        <h1>
-            {% block content_title %}{% endblock %}
-        </h1>
-    </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            {#md-medium size scree layout coś tam 12 ?#}
-            {% block content %}{% endblock %}
+    {#nav#}
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navligation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">visual .pix</a>
+            </div>
+            <div class="navbar-collapse colapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url('index') }}">home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">pictures<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">{{ 'categories'|trans }}</li>
+                            {#<li><a href="{{ url('image_photography') }}"> {{ 'photography'|trans }} </a></li>#}
+                            {#<li><a href="{{ url('image_design') }}"> {{ 'design'|trans }} </a></li>#}
+                            {#<li><a href="{{ url('image_quotes') }}"> {{ 'quotes'|trans }} </a></li>#}
+                            {#<li><a href="{{ url('image_fine_art') }}"> {{ 'fine art'|trans }} </a></li>#}
+                            {#<li><a href="{{ url('image_street_art') }}"> {{ 'street art'|trans }} </a></li>  #}
+                            {##}
+                            <li><a href="{{ url('image_photography') }}"> {{ 'photography'|trans }} </a></li>
+                            <li><a href=""> {{ 'design'|trans }} </a></li>
+                            <li><a href=""> {{ 'quotes'|trans }} </a></li>
+                            <li><a href=""> {{ 'fine art'|trans }} </a></li>
+                            <li><a href=""> {{ 'street art'|trans }} </a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">top</li>
+                            {#<li><a href="{{ url('images_fresh') }}"> {{ 'fresh'|trans }}fresh </a></li>#}
+                            {#<li><a href="{{ url('images_high_score') }}"> {{ 'high score'|trans }} </a></li>#}
+                            {#<li><a href="{{ url('images_popular') }}"> {{ 'most popular'|trans }} </a></li>#}
+
+                            <li><a href=""> {{ 'fresh'|trans }}fresh </a></li>
+                            <li><a href=""> {{ 'high score'|trans }} </a></li>
+                            <li><a href=""> {{ 'most popular'|trans }} </a></li>
+                        </ul>
+                    </li>
+
+                    {% if is_granted('ROLE_USER') %}
+                    <li class="dropdown">
+                        {#<a href="{{ url('users') }}" class="dropdown-toggle" data-toggle="dropdown">login.user?<b class="caret"></b></a>#}
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ app.security.token.user.username }}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">{{ 'pictures'|trans }}</li>
+                            {#<li><a href="{{ 'images_add' }}">{{ 'add'|trans }}</a></li>#}
+                            {#<li><a href="{{ 'user_images' }}"> {{ 'yours'|trans }} </a></li>#}
+
+                            <li><a href="">{{ 'add'|trans }}</a></li>
+                            <li><a href=""> {{ 'yours pix'|trans }} </a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"> jakiś help </a></li>
+                            <li><a href="{{ url('auth_logout') }}">{{ 'logout'|trans }}</a></li>
+                        </ul>
+                    </li>
+
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ url('users_list') }}">{{ 'users'|trans }}</a></li>
+                        <li><a href="{{ url('auth_logout') }}">{{ 'logout'|trans }}</a></li>
+
+                    {% else %}
+                        <li><a href="{{ url('registration') }}">{{ 'join us'|trans }}</a></li>
+                        <li><a href="{{ url('auth_login') }}">{{ 'login'|trans }}</a></li>
+                    {% endif%}
+
+                    <li><a href="#">about</a>
+                        {#???#}
+                    <li><a href="#" data-toggle="modal">contact</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            {#md-medium size scree layout coś tam 12 ?#}
-            {% block content_button %}{% endblock %}
+    {#end nav#}
+
+
+
+        <div class="row">COŚ TAM</div>
+
+        <div class="row">
+            <div id="content" class="col-md-12">{% block content %}{% endblock %}</div>
         </div>
-    </div>
+
+    {#<div class="nav navbar-inverse navbar-fixed-bottom" role="navigation">#}
+        {#<footer class="navbar-text pull-right">#}
+            {#<p> &copy; 2015 </p>#}
+        {#</footer>#}
+    {#</div>#}
+
 </div>
-
-<div class="nav navbar-inverse navbar-fixed-bottom" role="navigation">
-    <div class="navbar-text pull-right">
-        <p>&copy; 2015 </p>
-    </div>
-    <div class="navbar-text pull-left">
-        <a href="#y"><i class="fa fa-facebook-square fa-2x"> </i></a>
-        <a href="#a"><i class="fa fa-lastfm-square fa-2x"> </i></a>
-        <a href="#a"><i class="fa fa-vimeo-square fa-2x"> </i></a>
-        <a href="#a"><i class="fa fa fa-git-square fa-2x"> </i></a>
-        <a href="#b"><i class="fa fa-pied-piper-alt fa-2x"> </i></a>
-    </div>
-</div>
-
-<div class="modal fade" id="contact" role="dialog">
-    <div class="modal-dialog">
-        <div class="madal-content">
-            {#form#}
-            <form class="form-horizontal" role="form">
-                <div class="modal-header">
-                    <h4>Contact</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="contact-name" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="contact-name" placeholder="First & Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="contact-email" placeholder="example@domain.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message" class="col-sm-2 control-label">Message</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="4"></textarea>
-                        </div>
-                    </div>
-                    {#end form#}
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-default" data-dismiss="modal">Close</a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    {#data-dismiss="modal" close dialog window#}
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 </body>
+</html>

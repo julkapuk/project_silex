@@ -1,0 +1,11 @@
+{% extends '/base.twig' %}
+
+{% block title %}Hello World{% endblock %}
+
+{% block content %}
+    <h1>
+        {{ 'Hello'|trans }} {{ name }}!
+    </h1>
+    <p> Some static text. </p>
+    <p>    {{ "now"|date('d/m/Y H:i', timezone="Europe/Paris") }} </p>
+{% endblock %}

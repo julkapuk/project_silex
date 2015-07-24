@@ -1,0 +1,14 @@
+{% extends '/base.twig' %}
+
+{% block title %}Visual{% endblock %}
+
+{% block content %}
+    {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+        {#<h1>Zalogowany {{user.login}}</h1>#}
+    {#{% else %}#}
+        {#<div class="button">#}
+                {#<div class="button"><a href="{{ url('login') }}" title="{{ 'login' }}">{{ Login|trans }}</a></div>#}
+                {#<div class="button"><a href="{{ url('register') }}" title="{{ 'register' }}">{{ Register|trans}}</a></div>#}
+        {#</div>#}
+    {#{% endif %}#}
+{% endblock %}
