@@ -104,6 +104,34 @@ class UsersModel
             return array();
         }
     }
+    /**
+     * Gets user id by login.
+     *
+     * @access public
+     * @param string $name User name
+     *
+     * @return array Result
+     */
+    public function getUserId($login)
+    {
+        try {
+            $query = '
+              SELECT
+                users.id
+              FROM
+                users
+              WHERE
+                users.login = :login
+            ';
+            $statement = $this->db->prepare($query);
+            $statement->bindValue('login', $login, \PDO::PARAM_STR);
+            $statement->execute();
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            return !$result ? array() : current($result);
+        } catch (\PDOException $e) {
+            return array();
+        }
+    }
 
     /**
      * Gets user roles by User ID.
@@ -124,7 +152,8 @@ class UsersModel
                     users
                 INNER JOIN
                     roles
-                ON users.id_role = roles.id
+                ON
+                    users.id_role = roles.id
                 WHERE
                     users.id = :user_id
                 ';

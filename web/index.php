@@ -82,8 +82,7 @@ $app->register(
         ),
     )
 );
-//var_dump($app['security.encoder.digest']->encodePassword('PASSWORD_TO_ENCODE', ''));
-//var_dump($app['security.encoder.digest']->encodePassword('testtest', ''));
+//var_dump($app['security.encoder.digest']->encodePassword('password', ''));
 
 $app->mount('/hello', new Controller\HelloController());
 $app->mount('/', new Controller\IndexController());

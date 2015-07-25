@@ -53,7 +53,7 @@ class ImagesModel
         FROM
             images
         ORDER BY
-           images.data DESC;
+           images.date DESC;
         ';
         $result = $this->db->fetchAll($query);
         return !$result ? array() : $result;
@@ -69,7 +69,7 @@ class ImagesModel
         if (($id != '') && ctype_digit((string)$id)) {
             $query = '
         SELECT
-            images.id, images.name, images.title, images.description, images.data,
+            images.id, images.name, images.title, images.description, images.date,
             images.license, images.comments_count, images.scores, users.login
         FROM
             images
@@ -100,13 +100,13 @@ class ImagesModel
      * @throws \PDOException
      * @return mixed Result
      */
-    public function saveImage($image, $mediaPath)
+    public function saveImage($image, $mediaPath, $data)
     {
         try {
             $originalFilename = $image['image']->getClientOriginalName();
             $newFilename = $this->createName($originalFilename);
             $image['image']->move($mediaPath, $newFilename);
-            $this->saveFilename($newFilename);
+            $this->saveFilename($newFilename, $data);
             return true;
         } catch (\PDOException $e) {
             throw $e;
@@ -120,21 +120,33 @@ class ImagesModel
      * @param string $name Filename
      * @return mixed Result
      */
-    protected function saveFilename($name, $imageinfo)
+    protected function saveFilename($name, $data)
     {
-        return $this->db->insert('images', array('name' => $name));
+        return $this->db
+            ->insert(
+                'images',
+                array(
+                    'name' => $name,
+                    'title' => $data['title'],
+                    'description' => $data['description'],
+                    'license' => $data['license'],
+                    'date' => $data['date'],
+                    'user' => $data['user']
+                )
+            );
     }
-    /**
-     * Save filename in database.
-     *
-     * @access protected
-     * @param string $name Filename
-     * @return mixed Result
-     */
-    protected function $imageinfo()
-    {
-        return $this->db->insert('images', array('name' => $name));
-    }
+//    /**
+//     * Save filename in database.
+//     *
+//     * @access protected
+//     * @param string $name Filename
+//     * @return mixed Result
+//     */
+//    protected function imageInfo()
+//    {
+//        return $this->db->insert('images', array('name' => $name));
+//        return $imageInfo;
+//    }
 
     /**
      * Creates random filename.

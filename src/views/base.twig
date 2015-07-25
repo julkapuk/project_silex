@@ -70,11 +70,9 @@
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ app.security.token.user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">{{ 'pictures'|trans }}</li>
-                            {#<li><a href="{{ 'images_add' }}">{{ 'add'|trans }}</a></li>#}
-                            {#<li><a href="{{ 'user_images' }}"> {{ 'yours'|trans }} </a></li>#}
-
-                            <li><a href="">{{ 'add'|trans }}</a></li>
-                            <li><a href=""> {{ 'yours pix'|trans }} </a></li>
+                            <li><a href="{{ url('image_add') }}">{{ 'add'|trans }}</a></li>
+                            {#<li><a href="{{ url('user_images') }}"> {{ 'yours'|trans }} </a></li>#}
+                            <li><a href=""> {{ 'your pix'|trans }} </a></li>
                             <li class="divider"></li>
                             <li><a href="#"> jakiś help </a></li>
                             <li><a href="{{ url('auth_logout') }}">{{ 'logout'|trans }}</a></li>

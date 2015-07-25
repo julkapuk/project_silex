@@ -13,7 +13,6 @@ use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Model\ImagesModel;
-use Form\ImageForm;
 use Form\AddImageForm;
 
 /**
@@ -181,19 +180,20 @@ class ImagesController implements ControllerProviderInterface
     {
         // default values:
         $data = array();
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userId = $user->getId();
 
-//        $token = $app['security']->getToken();
-//
-//        if (null !== $token) {
-//            $user = $token->getUserId();
-//        }
+        $token = $app['security']->getToken();
 
-        var_dump($useriD);
+        if (null !== $token) {
+            $name = $token->getUsername();
+        }
+
+
+//        var_dump($data);
+
         $form = $app['form.factory']
             ->createBuilder(new AddImageForm(), $data)->getForm();
 
+        var_dump($data);
         if ($request->isMethod('POST')) {
 
             $form->bind($request);
@@ -203,10 +203,12 @@ class ImagesController implements ControllerProviderInterface
                 try {
                     $files = $request->files->get($form->getName());
                     $data = $form->getData();
-                    $data['data'] = date("Y/m/d");
-//                    $data['id_user'] =
-                    echo "bu";
-                    var_dump($data);
+                    $data['date'] = date("Y-m-d h:i:s");
+//                    $usersModel = new UsersModel($app);
+//                    $usersModel->getUserId($login);
+//                    var_dump($usersModel);
+                    $data['user'] = $name;
+//                    var_dump($data);
                     $mediaPath = dirname(dirname(dirname(__FILE__))) . '/web/upload';
                     $imagesModel = new ImagesModel($app);
                     $imagesModel->saveImage($files, $mediaPath, $data);
