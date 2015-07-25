@@ -40,9 +40,9 @@ class ImagesController implements ControllerProviderInterface
      *
      * @access public
      *
-*@param Silex\Application $app Silex application
+     *@param Silex\Application $app Silex application
      *
-*@return ImagesController Result
+     *@return ImagesController Result
      */
     public function connect(Application $app)
     {
@@ -76,7 +76,7 @@ class ImagesController implements ControllerProviderInterface
 //        $imagesController->match('/delete/{id}/', array($this, 'deleteAction'));
         $imagesController->match('/image_photography/', array($this, 'photographyAction'));
         $imagesController->match('/image_photography', array($this, 'photographyAction'))
-        ->bind('image_photography');
+            ->bind('image_photography');
 
         $imagesController->match('/image_design/', array($this, 'designAction'));
         $imagesController->match('/image_design', array($this, 'designAction'))
@@ -180,11 +180,17 @@ class ImagesController implements ControllerProviderInterface
     public function addAction(Application $app, Request $request)
     {
         // default values:
-        $data = array(
-//            'data' => date("Y/m/d"),
-//            'id_user' => getUserId();
-        );
+        $data = array();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = $user->getId();
 
+//        $token = $app['security']->getToken();
+//
+//        if (null !== $token) {
+//            $user = $token->getUserId();
+//        }
+
+        var_dump($useriD);
         $form = $app['form.factory']
             ->createBuilder(new AddImageForm(), $data)->getForm();
 
@@ -196,9 +202,14 @@ class ImagesController implements ControllerProviderInterface
 
                 try {
                     $files = $request->files->get($form->getName());
+                    $data = $form->getData();
+                    $data['data'] = date("Y/m/d");
+//                    $data['id_user'] =
+                    echo "bu";
+                    var_dump($data);
                     $mediaPath = dirname(dirname(dirname(__FILE__))) . '/web/upload';
                     $imagesModel = new ImagesModel($app);
-                    $imagesModel->saveImage($files, $mediaPath);
+                    $imagesModel->saveImage($files, $mediaPath, $data);
 
                     $app['session']->getFlashBag()->add(
                         'message',
@@ -233,7 +244,6 @@ class ImagesController implements ControllerProviderInterface
 
         }
         $this->view['form'] = $form->createView();
-
         return $app['twig']->render('images/add.twig', $this->view);
     }
 
