@@ -26,22 +26,7 @@ $app['translator'] = $app->share($app->extend('translator', function($translator
     $translator->addResource('yaml', dirname(dirname(__FILE__)) . '/config/locales/pl.yml', 'pl');
     return $translator;
 }));
-$app->register(
-    new Silex\Provider\DoctrineServiceProvider(),
-    array(
-        'db.options' => array(
-            'driver'    => 'pdo_mysql',
-            'host'      => 'localhost',
-            'dbname'    => '13_pukalska',
-            'user'      => '13_pukalska',
-            'password'  => 'lubieczekolade',
-            'charset'   => 'utf8',
-            'driverOptions' => array(
-                1002=>'SET NAMES utf8'
-            )
-        ),
-    )
-);
+
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
